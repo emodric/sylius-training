@@ -9,6 +9,7 @@ sylius_grid:
                 code:
                     type: string
                     label: sylius.ui.code
+                    sortable: true
                 name:
                     type: twig
                     label: sylius.ui.name
