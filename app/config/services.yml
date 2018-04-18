@@ -40,3 +40,11 @@ services:
                 calculator: minimum_value_free_rate
                 form_type: AppBundle\Form\Type\ChannelBasedMinimumValueFreeConfigurationType
                 label: app.ui.minimum_value_free_rate
+
+    app.event_listener.admin_menu_listener:
+        class: AppBundle\EventListener\AdminMenuListener
+        tags:
+            -
+                name: kernel.event_listener
+                event: sylius.menu.admin.main
+                method: addSupplierToMenu
