@@ -20,6 +20,7 @@ final class AdminMenuListener
             ])
             ->setLabel('Manage Suppliers')
             ->setLabelAttribute('icon', 'sliders')
+            ->setLabelAttribute('color', 'blue')
         ;
     }
 }
