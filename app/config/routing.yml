@@ -42,4 +42,7 @@ app_admin_supplier:
         section: admin
         except: ['show']
         grid: app_admin_supplier
+        vars:
+            index:
+                icon: sliders
     type: sylius.resource

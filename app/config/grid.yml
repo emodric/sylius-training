@@ -10,5 +10,21 @@ sylius_grid:
                     type: string
                     label: sylius.ui.code
                 name:
-                    type: string
+                    type: twig
                     label: sylius.ui.name
+                    path: .
+                    options:
+                        template: "@SyliusUi/Grid/Field/nameAndDescription.html.twig"
+            filters:
+                name:
+                    type: string
+                    label: sylius.ui.search
+            actions:
+                main:
+                    create:
+                        type: create
+                item:
+                    delete:
+                        type: delete
+                    update:
+                        type: update

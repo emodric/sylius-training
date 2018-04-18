@@ -16,3 +16,7 @@ AppBundle\Entity\Supplier:
       type: string
       length: 140
       nullable: false
+    description:
+      type: string
+      length: 250
+      nullable: true

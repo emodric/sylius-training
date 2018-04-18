@@ -14,6 +14,9 @@ class Supplier implements ResourceInterface
     /** @var string|null */
     private $name;
 
+    /** @var string|null */
+    private $description;
+
     public function getId()
     {
         return $this->id;
@@ -37,5 +40,15 @@ class Supplier implements ResourceInterface
     public function setName(?string $name): void
     {
         $this->name = $name;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): void
+    {
+        $this->description = $description;
     }
 }
