@@ -38,5 +38,5 @@ services:
             -
                 name: sylius.shipping_calculator
                 calculator: minimum_value_free_rate
-                form_type: AppBundle\Form\Type\MinimumValueFreeConfigurationType
+                form_type: AppBundle\Form\Type\ChannelBasedMinimumValueFreeConfigurationType
                 label: app.ui.minimum_value_free_rate
