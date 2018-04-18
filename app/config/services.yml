@@ -31,3 +31,12 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+
+    app.calculator.minimum_value_free_rate_calculator:
+        class: AppBundle\Calculator\MinimumValueFreeRateCalculator
+        tags:
+            -
+                name: sylius.shipping_calculator
+                calculator: minimum_value_free_rate
+                form_type: AppBundle\Form\Type\MinimumValueFreeConfigurationType
+                label: app.ui.minimum_value_free_rate
