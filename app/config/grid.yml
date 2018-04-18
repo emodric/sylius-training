@@ -1,0 +1,14 @@
+sylius_grid:
+    grids:
+        app_admin_supplier:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: AppBundle\Entity\Supplier
+            fields:
+                code:
+                    type: string
+                    label: sylius.ui.code
+                name:
+                    type: string
+                    label: sylius.ui.name
