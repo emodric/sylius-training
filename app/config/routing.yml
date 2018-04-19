@@ -46,3 +46,16 @@ app_admin_supplier:
             index:
                 icon: sliders
     type: sylius.resource
+
+app_admin_order_item_return:
+    path: /order-item/{id}/return
+    methods: [PUT]
+    defaults:
+        _controller: sylius.controller.order_item:applyStateMachineTransitionAction
+        _sylius:
+            permission: true
+            state_machine:
+                graph: app_order_item
+                transition: return
+            redirect: referer
+            flash: app.order_item.returned

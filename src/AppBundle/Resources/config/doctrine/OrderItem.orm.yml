@@ -1,0 +1,8 @@
+AppBundle\Entity\OrderItem:
+  type: entity
+  table: sylius_order_item
+  fields:
+    state:
+      type: string
+      length: 140
+      nullable: false

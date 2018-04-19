@@ -3,3 +3,9 @@ sylius_resource:
         app.supplier:
             classes:
                 model: AppBundle\Entity\Supplier
+
+sylius_order:
+    resources:
+        order_item:
+            classes:
+                model: AppBundle\Entity\OrderItem

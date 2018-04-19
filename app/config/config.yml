@@ -12,6 +12,7 @@ imports:
     - { resource: services.yml }
     - { resource: resource.yml }
     - { resource: grid.yml }
+    - { resource: state_machine.yml }
 
 parameters:
     locale: en_US

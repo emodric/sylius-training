@@ -1,0 +1,24 @@
+winzou_state_machine:
+    app_order_item:
+        class: "%sylius.model.order_item.class%"
+        property_path: state
+        graph: app_order_item
+        state_machine_class: "%sylius.state_machine.class%"
+        states:
+            cart: ~
+            sold: ~
+            returned: ~
+        transitions:
+            create:
+                from: [cart]
+                to: sold
+            return:
+                from: [sold]
+                to: returned
+    sylius_order_checkout:
+        callbacks:
+            after:
+                app_create_order_item:
+                    on: ["complete"]
+                    do: ["@app.state_resolver.order_item_state_resolver", "resolve"]
+                    args: ["object"]
