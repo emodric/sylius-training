@@ -10,3 +10,9 @@ sylius_order:
         order_item:
             classes:
                 model: AppBundle\Entity\OrderItem
+
+sylius_product:
+    resources:
+        product:
+            classes:
+                model: AppBundle\Entity\Product

@@ -81,3 +81,22 @@ services:
             - []
         tags:
             - { name: form.type }
+
+    app.form_extension.product_type_extension:
+        class: AppBundle\Form\Extension\ProductTypeExtension
+        tags:
+            - { name: form.type_extension, extended_type: Sylius\Bundle\ProductBundle\Form\Type\ProductType }
+
+    app.block.product_form_type:
+        class: Sylius\Bundle\UiBundle\Block\BlockEventListener
+        arguments:
+            - '@@/form.html.twig'
+        tags:
+            -
+                name: kernel.event_listener
+                event: sonata.block.event.sylius.admin.product.create.tab_details
+                method: onBlockEvent
+            -
+                name: kernel.event_listener
+                event: sonata.block.event.sylius.admin.product.update.tab_details
+                method: onBlockEvent
