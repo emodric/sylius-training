@@ -40,3 +40,12 @@ services:
     app.state_resolver.order_item_state_resolver:
         class: AppBundle\StateResolver\OrderItemStateResolver
         arguments: ['@sm.factory']
+
+    app.promotion.birthday_promotion:
+        class: AppBundle\Promotion\BirthdayPromotion
+        tags:
+            -
+                name: sylius.promotion_rule_checker
+                type: birth_day
+                form_type: Symfony\Component\Form\Extension\Core\Type\FormType
+                label: app.ui.birth_day
