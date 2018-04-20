@@ -73,3 +73,11 @@ services:
         arguments: ['@app.manager.supplier', '@app.fixture_factory.supplier_example_factory']
         tags:
             - { name: sylius_fixtures.fixture }
+
+    app.form_type.supplier_type:
+        class: AppBundle\Form\Type\SupplierType
+        arguments:
+            - 'AppBundle\Entity\Supplier'
+            - []
+        tags:
+            - { name: form.type }

@@ -2,9 +2,10 @@
 
 namespace AppBundle\Entity;
 
+use Sylius\Component\Resource\Model\CodeAwareInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
-class Supplier implements ResourceInterface
+class Supplier implements ResourceInterface, CodeAwareInterface
 {
     private $id;
 

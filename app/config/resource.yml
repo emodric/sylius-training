@@ -3,6 +3,7 @@ sylius_resource:
         app.supplier:
             classes:
                 model: AppBundle\Entity\Supplier
+                form: AppBundle\Form\Type\SupplierType
 
 sylius_order:
     resources:
