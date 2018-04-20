@@ -49,3 +49,16 @@ services:
                 type: birth_day
                 form_type: Symfony\Component\Form\Extension\Core\Type\FormType
                 label: app.ui.birth_day
+
+    app.event_listener.order_finished_coupon_generator_listener:
+        class: AppBundle\EventListener\OrderFinishedCouponGeneratorListener
+        arguments:
+            - '@sylius.factory.promotion'
+            - '@sylius.repository.promotion'
+            - '@sylius.factory.promotion_action'
+            - '@sylius.promotion_coupon_generator'
+        tags:
+            -
+                name: kernel.event_listener
+                event: sylius.order.post_complete
+                method: sendCoupon
