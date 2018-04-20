@@ -59,3 +59,29 @@ app_admin_order_item_return:
                 transition: return
             redirect: referer
             flash: app.order_item.returned
+
+
+app_admin_ajax_suppliers_by_phrase:
+    path: /admin/ajax/suppliers/search
+    methods: [GET]
+    defaults:
+        _controller: app.controller.supplier:indexAction
+        _sylius:
+            permission: true
+            repository:
+                method: findByPhrase
+                arguments:
+                    phrase: $phrase
+        _format: json
+
+app_admin_ajax_suppliers_by_codes:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: app.controller.supplier:indexAction
+        _sylius:
+            permission: true
+            repository:
+                method: findByCode
+                arguments: $code
+        _format: json
