@@ -57,6 +57,7 @@ services:
             - '@sylius.repository.promotion'
             - '@sylius.factory.promotion_action'
             - '@sylius.promotion_coupon_generator'
+            - '@sylius.email_sender'
         tags:
             -
                 name: kernel.event_listener

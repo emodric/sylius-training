@@ -1,0 +1,9 @@
+{% block subject %}
+    Promo coupon
+{% endblock %}
+
+{% block body %}
+    {% autoescape %}
+        Content: {{ coupon.code }}
+    {% endautoescape %}
+{% endblock %}

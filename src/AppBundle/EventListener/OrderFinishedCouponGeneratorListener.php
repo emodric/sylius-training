@@ -6,6 +6,7 @@ use Sylius\Component\Core\Factory\PromotionActionFactoryInterface;
 use Sylius\Component\Core\Model\OrderInterface;
 use Sylius\Component\Core\Model\PromotionInterface;
 use Sylius\Component\Core\Repository\PromotionRepositoryInterface;
+use Sylius\Component\Mailer\Sender\SenderInterface;
 use Sylius\Component\Promotion\Generator\PromotionCouponGeneratorInstruction;
 use Sylius\Component\Promotion\Generator\PromotionCouponGeneratorInterface;
 use Sylius\Component\Resource\Factory\Factory;
@@ -25,19 +26,25 @@ final class OrderFinishedCouponGeneratorListener
 
     /** @var PromotionCouponGeneratorInterface */
     private $promotionCouponGenerator;
+
     /** @var PromotionActionFactoryInterface */
     private $promotionActionFactory;
+
+    /** @var SenderInterface */
+    private $sender;
 
     public function __construct(
         FactoryInterface $factory,
         PromotionRepositoryInterface $repository,
         PromotionActionFactoryInterface $promotionActionFactory,
-        PromotionCouponGeneratorInterface $promotionCouponGenerator
+        PromotionCouponGeneratorInterface $promotionCouponGenerator,
+        SenderInterface $sender
     ) {
         $this->factory = $factory;
         $this->promotionCouponGenerator = $promotionCouponGenerator;
         $this->repository = $repository;
         $this->promotionActionFactory = $promotionActionFactory;
+        $this->sender = $sender;
     }
 
     public function sendCoupon(GenericEvent $event): void
@@ -56,7 +63,10 @@ final class OrderFinishedCouponGeneratorListener
 
         $this->repository->add($promotion);
 
-        $this->promotionCouponGenerator->generate($promotion, $generatorInstruction);
+        $coupons = $this->promotionCouponGenerator->generate($promotion, $generatorInstruction);
+        $coupon = array_pop($coupons);
+
+        $this->sender->send('coupon_email', [$order->getCustomer()->getEmail()], ['order' => $order, 'coupon' => $coupon]);
     }
 
     private function providePromotion(OrderInterface $order): PromotionInterface

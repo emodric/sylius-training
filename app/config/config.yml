@@ -13,6 +13,7 @@ imports:
     - { resource: resource.yml }
     - { resource: grid.yml }
     - { resource: state_machine.yml }
+    - { resource: sylius_mailer.yml }
 
 parameters:
     locale: en_US

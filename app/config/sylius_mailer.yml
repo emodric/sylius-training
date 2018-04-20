@@ -1,0 +1,5 @@
+sylius_mailer:
+    emails:
+        coupon_email:
+            subject: New coupon
+            template: ":Email:coupon.html.twig"
