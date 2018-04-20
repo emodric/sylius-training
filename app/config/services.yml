@@ -63,3 +63,13 @@ services:
                 name: kernel.event_listener
                 event: sylius.order.post_complete
                 method: sendCoupon
+
+    app.fixture_factory.supplier_example_factory:
+        class: AppBundle\Fixture\Factory\SupplierExampleFactory
+        arguments: ['@app.factory.supplier']
+
+    app.fixture.supplier_fixture:
+        class: AppBundle\Fixture\SupplierFixture
+        arguments: ['@app.manager.supplier', '@app.fixture_factory.supplier_example_factory']
+        tags:
+            - { name: sylius_fixtures.fixture }

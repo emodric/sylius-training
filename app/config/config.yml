@@ -14,6 +14,7 @@ imports:
     - { resource: grid.yml }
     - { resource: state_machine.yml }
     - { resource: sylius_mailer.yml }
+    - { resource: fixture.yml }
 
 parameters:
     locale: en_US
