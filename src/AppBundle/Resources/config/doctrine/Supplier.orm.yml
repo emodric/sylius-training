@@ -1,0 +1,22 @@
+AppBundle\Entity\Supplier:
+    type: entity
+    table: app_supplier
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        code:
+            type: string
+            length: 140
+            unique: true
+            nullable: false
+        name:
+            type: string
+            length: 140
+            nullable: false
+        description:
+            type: string
+            length: 250
+            nullable: true
